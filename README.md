@@ -457,3 +457,4 @@ The root application monitors the `argocd/` directory. When a new environment Ap
 
 - **Dev / Staging**: `automated: { prune: true, selfHeal: true }` — ArgoCD automatically syncs Git changes and reverts manual drift.
 - **Prod**: No `automated` block — requires explicit `argocd app sync nginx-prod` to apply changes. Drift is detected but not corrected automatically.
+# gitops-demo
