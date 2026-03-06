@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: nginx-prep
+namePrefix: prep-
+
+commonLabels:
+  env: prep
+
+resources:
+  - ../../base
+
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: nginx
+    path: deployment-patch.json
+
+configMapGenerator:
+  - name: nginx-config
+    files:
+      - config/app.conf
+
+secretGenerator:
+  - name: nginx-secret
+    literals:
+      - DB_HOST=prep-db.internal
+      - DB_PASSWORD=prep-secret-pass
+      - API_KEY=prep-api-key-67890
