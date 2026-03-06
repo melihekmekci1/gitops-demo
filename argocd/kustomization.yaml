@@ -5,3 +5,4 @@ resources:
   - dev-app.yaml
   - staging-app.yaml
   - prod-app.yaml
+  - prep-app.yaml
